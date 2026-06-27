@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposal Hearing Requirements Checklist</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #f5f6f7;
+    color: #1a1a1a;
+    padding: 24px 16px 48px;
+    min-height: 100vh;
+  }
+
+  .wrap {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .page-header {
+    margin-bottom: 24px;
+  }
+
+  .page-header h1 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 4px;
+  }
+
+  .page-header p {
+    font-size: 14px;
+    color: #666;
+  }
+
+  /* Progress */
+  .progress-wrap { margin-bottom: 28px; }
+  .progress-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 8px;
+  }
+  .progress-label { font-size: 13px; color: #666; }
+  .progress-count { font-size: 13px; font-weight: 600; color: #1a1a1a; }
+  .progress-track {
+    height: 7px;
+    background: #e2e4e8;
+    border-radius: 99px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    border-radius: 99px;
+    background: #2d7d46;
+    transition: width 0.35s ease;
+  }
+
+  /* Section cards */
+  .section {
+    background: #fff;
+    border: 1px solid #e2e4e8;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    overflow: hidden;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 16px;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.12s;
+  }
+  .section-header:hover { background: #f9fafb; }
+
+  .sec-box {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #c4c7cd;
+    border-radius: 5px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .sec-box.partial { background: #fff8e1; border-color: #f5a623; }
+  .sec-box.full    { background: #2d7d46; border-color: #2d7d46; }
+
+  .sec-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: #1a1a1a;
+    flex: 1;
+  }
+  .sec-sub {
+    font-size: 13px;
+    font-weight: 400;
+    color: #888;
+    margin-left: 4px;
+  }
+
+  .sec-badge {
+    font-size: 12px;
+    color: #888;
+    background: #f0f1f3;
+    border: 1px solid #e2e4e8;
+    border-radius: 99px;
+    padding: 2px 10px;
+    flex-shrink: 0;
+  }
+
+  .sec-chevron {
+    color: #aaa;
+    font-size: 18px;
+    line-height: 1;
+    transition: transform 0.2s;
+    flex-shrink: 0;
+  }
+  .sec-chevron.open { transform: rotate(180deg); }
+
+  /* Items */
+  .section-body { border-top: 1px solid #e2e4e8; }
+
+  .item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 16px;
+    cursor: pointer;
+    transition: background 0.1s;
+    border-bottom: 1px solid #f0f1f3;
+  }
+  .item:last-child { border-bottom: none; }
+  .item:hover { background: #f9fafb; }
+
+  .item-box {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #c4c7cd;
+    border-radius: 4px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .item-box.checked { background: #2d7d46; border-color: #2d7d46; }
+
+  .item-text { flex: 1; }
+  .item-label {
+    font-size: 14px;
+    color: #1a1a1a;
+    line-height: 1.5;
+    transition: color 0.15s;
+  }
+  .item-label.checked { color: #aaa; text-decoration: line-through; }
+  .item-note {
+    display: block;
+    font-size: 12px;
+    color: #aaa;
+    font-style: italic;
+    margin-top: 2px;
+  }
+
+  /* Reminders sub-group */
+  .reminders-group { border-top: 1px solid #e2e4e8; }
+  .reminders-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: #999;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 8px 16px 2px;
+  }
+
+  /* Reset */
+  .reset-wrap { margin-top: 20px; text-align: right; }
+  .reset-btn {
+    font-size: 13px;
+    color: #aaa;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: color 0.15s;
+  }
+  .reset-btn:hover { color: #c0392b; }
+
+  /* SVG icons */
+  svg.check { display: block; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="page-header">
+    <h1>Proposal Hearing Requirements</h1>
+    <p>Use this checklist to track your group's progress before the Proposal Hearing.</p>
+  </div>
+
+  <div class="progress-wrap">
+    <div class="progress-meta">
+      <span class="progress-label">Overall progress</span>
+      <span class="progress-count" id="prog-count">0 / 0 completed</span>
+    </div>
+    <div class="progress-track">
+      <div class="progress-fill" id="prog-fill" style="width:0%"></div>
+    </div>
+  </div>
+
+  <div id="sections-root"></div>
+
+  <div class="reset-wrap">
+    <button class="reset-btn" onclick="resetAll()">
+      ↺ Reset all
+    </button>
+  </div>
+</div>
+
+<script>
+const SECTIONS = [
+  {
+    id: "presentation",
+    title: "Presentation",
+    items: [
+      { id: "p1", label: "Statement of the Problem" },
+      { id: "p2", label: "Existing Solutions" },
+      { id: "p3", label: "Research Gaps" },
+      { id: "p4", label: "Proposed Solution" },
+      { id: "p5", label: "System Architecture" },
+      { id: "p6", label: "Figma UI/UX or Mockups" },
+      { id: "p7", label: "Proof of Concept (PoC)" },
+      { id: "p8", label: "Schematic Diagram or SketchUp Prototype", note: "For projects with IoT only" },
+      { id: "p9", label: "Proof of Interview", note: "For projects with stakeholders only" }
+    ]
+  },
+  {
+    id: "chapter1",
+    title: "Chapter 1",
+    subtitle: "4 Printed Copies",
+    items: [
+      { id: "c1", label: "Introduction" },
+      { id: "c2", label: "Review of Related Literature (RRL)" },
+      { id: "c3", label: "Review of Related Works (RRW)" },
+      { id: "c4", label: "Scope and Limitations" },
+      { id: "c5", label: "Significance of the Study" },
+      { id: "c6", label: "In-text Citations" },
+      { id: "c7", label: "References (last page of Chapter 1)" }
+    ],
+    reminders: [
+      { id: "r1", label: "Academic format" },
+      { id: "r2", label: "References have been read by all proponents" }
+    ]
+  },
+  {
+    id: "mustHaves",
+    title: "Must-Haves Document",
+    items: [
+      { id: "m1", label: "Soft copy in .docx format", note: "NOT PDF" },
+      { id: "m2", label: "Submitted BEFORE the Proposal Hearing" },
+      { id: "m3", label: "4 printed copies for the Proposal Hearing" }
+    ]
+  },
+  {
+    id: "proposalForm",
+    title: "Final Draft of Proposal Form",
+    items: [
+      { id: "f1", label: "1 printed copy" },
+      { id: "f2", label: "Signature required", note: "Panel will sign during the hearing if you were scheduled" }
+    ]
+  }
+];
+
+const STORAGE_KEY = "proposal_checklist_v1";
+
+let state = {};
+let openSections = {};
+
+function load() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      state = parsed.state || {};
+      openSections = parsed.openSections || {};
+    } else {
+      SECTIONS.forEach(s => { openSections[s.id] = true; });
+    }
+  } catch(e) {
+    SECTIONS.forEach(s => { openSections[s.id] = true; });
+  }
+}
+
+function save() {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({ state, openSections }));
+  } catch(e) {}
+}
+
+function allIds(section) {
+  const ids = section.items.map(i => i.id);
+  if (section.reminders) ids.push(...section.reminders.map(r => r.id));
+  return ids;
+}
+
+function totalItems() {
+  return SECTIONS.reduce((a, s) => a + allIds(s).length, 0);
+}
+
+function totalChecked() {
+  return Object.values(state).filter(Boolean).length;
+}
+
+function sectionChecked(section) {
+  return allIds(section).filter(id => state[id]).length;
+}
+
+function toggleItem(id) {
+  state[id] = !state[id];
+  save();
+  render();
+}
+
+function toggleSection(id) {
+  openSections[id] = !openSections[id];
+  save();
+  render();
+}
+
+function resetAll() {
+  if (!confirm("Reset all checklist progress?")) return;
+  state = {};
+  save();
+  render();
+}
+
+function checkSVG() {
+  return `<svg class="check" width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <polyline points="2,5.5 4.5,8 9,3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>`;
+}
+
+function partialSVG() {
+  return `<svg class="check" width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="2" y="2" width="6" height="6" rx="1" fill="#f5a623"/>
+  </svg>`;
+}
+
+function chevronSVG(open) {
+  return `<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"
+    style="transition:transform 0.2s;transform:rotate(${open ? '180deg' : '0deg'})">
+    <polyline points="4,6 8,10 12,6" stroke="#aaa" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>`;
+}
+
+function render() {
+  const total = totalItems();
+  const checked = totalChecked();
+  const pct = total === 0 ? 0 : Math.round((checked / total) * 100);
+
+  document.getElementById("prog-count").textContent = `${checked} / ${total} completed`;
+  document.getElementById("prog-fill").style.width = pct + "%";
+
+  const root = document.getElementById("sections-root");
+  root.innerHTML = SECTIONS.map(section => {
+    const ids = allIds(section);
+    const sc = sectionChecked(section);
+    const st = ids.length;
+    const isFull = sc === st;
+    const isPartial = sc > 0 && !isFull;
+    const isOpen = !!openSections[section.id];
+
+    const boxClass = isFull ? "full" : isPartial ? "partial" : "";
+    const boxIcon = isFull ? checkSVG() : isPartial ? partialSVG() : "";
+
+    const itemsHtml = section.items.map(item => {
+      const ch = !!state[item.id];
+      return `<div class="item" onclick="toggleItem('${item.id}')">
+        <div class="item-box ${ch ? 'checked' : ''}">${ch ? checkSVG() : ''}</div>
+        <div class="item-text">
+          <span class="item-label ${ch ? 'checked' : ''}">${item.label}</span>
+          ${item.note ? `<span class="item-note">${item.note}</span>` : ''}
+        </div>
+      </div>`;
+    }).join("");
+
+    const remHtml = section.reminders ? `
+      <div class="reminders-group">
+        <div class="reminders-label">Reminders</div>
+        ${section.reminders.map(r => {
+          const ch = !!state[r.id];
+          return `<div class="item" onclick="toggleItem('${r.id}')">
+            <div class="item-box ${ch ? 'checked' : ''}">${ch ? checkSVG() : ''}</div>
+            <div class="item-text">
+              <span class="item-label ${ch ? 'checked' : ''}">${r.label}</span>
+            </div>
+          </div>`;
+        }).join("")}
+      </div>
+    ` : "";
+
+    return `<div class="section">
+      <div class="section-header" onclick="toggleSection('${section.id}')">
+        <div class="sec-box ${boxClass}">${boxIcon}</div>
+        <span class="sec-title">${section.title}${section.subtitle ? `<span class="sec-sub">— ${section.subtitle}</span>` : ''}</span>
+        <span class="sec-badge">${sc}/${st}</span>
+        ${chevronSVG(isOpen)}
+      </div>
+      ${isOpen ? `<div class="section-body">${itemsHtml}${remHtml}</div>` : ''}
+    </div>`;
+  }).join("");
+}
+
+load();
+render();
+</script>
+</body>
+</html>
